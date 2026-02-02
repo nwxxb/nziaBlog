@@ -1,0 +1,9 @@
+{{ define "main" }}
+<a href="/">← Back Home</a>
+<article>
+  <h1>{{ .Title }}</h1>
+  <aside>Published on: {{ .Date.Format "January 2, 2006" }}</aside>
+  {{ .Params.summary }}
+  {{ .Content }}
+</article>
+{{ end }}

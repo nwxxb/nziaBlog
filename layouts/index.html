@@ -1,0 +1,36 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+
+<hr />
+
+{{ $projectsDir := .Site.GetPage "section" "projects" }}
+<h2>Projects</h2>
+<ul>
+  {{ range $projectsDir.Pages }}
+    {{ if or (gt (len .Pages) 0) (gt (len .Content) 0) }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a> - {{ .Date.Format "Jan 2, 2006" }}
+      <br />
+      {{ .Params.summary | truncate 150 }}
+    </li>
+    {{ else }}
+    <li>
+      <a href="{{ .Params.link }}">{{ .Title }}</a> - {{ .Date.Format "Jan 2, 2006" }}
+      <br />
+      {{ .Params.summary | truncate 150 }}
+    </li>
+    {{ end }}
+  {{ end }}
+</ul>
+
+{{ $postsDir := .Site.GetPage "section" "posts" }}
+<h2>Posts</h2>
+<ul>
+  {{ range $postsDir.RegularPages }}
+  <li>
+    <a href="{{ .Permalink }}">{{ .Title }}</a> - {{ .Date.Format "Jan 2, 2006" }}
+  </li>
+  {{ end }}
+</ul>
+{{ end }}

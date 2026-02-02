@@ -1,0 +1,18 @@
+{{ define "main" }}
+<a href="/">← Back Home</a>
+<h1>{{ .Title }}</h1>
+{{ .Params.summary }}
+{{ .Content }}
+
+<hr />
+
+<ul>
+  {{ range .RegularPages }}
+  <div>
+    <h3>{{ .Title }}</h3>
+    {{ .Content }}
+  </div>
+  <hr />
+  {{ end }}
+</ul>
+{{ end }}
