@@ -1,8 +1,13 @@
 {{ define "main" }}
-<a href="/">← Back Home</a>
-<article>
-  <h1>{{ .Title }}</h1>
-  <aside>Published on: {{ .Date.Format "January 2, 2006" }}</aside>
+  {{ partial "pages_nav.html" . }}
+
+  <hgroup>
+    <h1>{{ .Title }}</h1>
+    <p><small>{{ .Date.Format "January 2, 2006" }}</small></p>
+    {{ with .Params.summary }}
+      <p>{{ . }}</p>
+    {{ end }}
+  </hgroup>
+
   <div>{{ .Content }}</div>
-</article>
 {{ end }}

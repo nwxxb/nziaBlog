@@ -1,8 +1,6 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
-{{ .Content }}
-
-<hr />
+<div>{{ .Content }}</div>
 
 {{ $projectsDir := .Site.GetPage "section" "projects" }}
 <h2>Projects</h2>
@@ -10,13 +8,23 @@
   {{ range $projectsDir.Pages }}
     {{ if or (gt (len .Pages) 0) (gt (len .Content) 0) }}
     <li>
-      <a href="{{ .Permalink }}">{{ .Title }}</a> - {{ .Date.Format "Jan 2, 2006" }}
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
       <br />
       {{ .Params.summary | truncate 150 }}
     </li>
     {{ else }}
     <li>
-      <a href="{{ .Params.link }}">{{ .Title }}</a> - {{ .Date.Format "Jan 2, 2006" }}
+      <a
+        href="{{ .Params.link }}"
+        data-tooltip="{{ .Params.link }}"
+        data-placement="right"
+      >
+        {{ .Title }}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="icon">
+          <path d="M6.22 8.72a.75.75 0 0 0 1.06 1.06l5.22-5.22v1.69a.75.75 0 0 0 1.5 0v-3.5a.75.75 0 0 0-.75-.75h-3.5a.75.75 0 0 0 0 1.5h1.69L6.22 8.72Z" />
+          <path d="M3.5 6.75c0-.69.56-1.25 1.25-1.25H7A.75.75 0 0 0 7 4H4.75A2.75 2.75 0 0 0 2 6.75v4.5A2.75 2.75 0 0 0 4.75 14h4.5A2.75 2.75 0 0 0 12 11.25V9a.75.75 0 0 0-1.5 0v2.25c0 .69-.56 1.25-1.25 1.25h-4.5c-.69 0-1.25-.56-1.25-1.25v-4.5Z" />
+        </svg>
+      </a>
       <br />
       {{ .Params.summary | truncate 150 }}
     </li>
@@ -29,7 +37,7 @@
 <ul>
   {{ range $postsDir.RegularPages }}
   <li>
-    <a href="{{ .Permalink }}">{{ .Title }}</a> - {{ .Date.Format "Jan 2, 2006" }}
+    <a href="{{ .Permalink }}">{{ .Title }}</a> <small>{{ .Date.Format "Jan 2, 2006" }}</small>
   </li>
   {{ end }}
 </ul>
