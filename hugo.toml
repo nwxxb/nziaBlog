@@ -1,6 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'nwxxb'
+enableRobotsTXT = true
 
 [params]
   github_link = 'https://github.com/nwxxb'
