@@ -2,6 +2,7 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'nwxxb'
 enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
 
 [params]
   github_link = 'https://github.com/nwxxb'
