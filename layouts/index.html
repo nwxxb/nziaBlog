@@ -2,8 +2,13 @@
 <h1>{{ .Title }}</h1>
 <div>{{ .Content }}</div>
 
+<div style="display: flex; margin-bottom: var(--pico-typography-spacing-vertical);">
+  {{ partial "contact_buttons.html" }}
+  {{ partial "theme_button.html" }}
+</div>
+
 {{ $projectsDir := .Site.GetPage "section" "projects" }}
-<h2>Projects</h2>
+<h2 style="margin-top: 0px; margin-bottom: 8px;">Projects</h2>
 <ul>
   {{ range $projectsDir.Pages }}
     {{ if or (gt (len .Pages) 0) (gt (len .Content) 0) }}
@@ -33,7 +38,7 @@
 </ul>
 
 {{ $postsDir := .Site.GetPage "section" "posts" }}
-<h2>Posts</h2>
+<h2 style="margin-top: 0px; margin-bottom: 8px;">Posts</h2>
 <ul>
   {{ range $postsDir.RegularPages }}
   <li>

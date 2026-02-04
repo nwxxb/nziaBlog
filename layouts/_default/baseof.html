@@ -2,7 +2,28 @@
 <html>
   <head>
     <title>{{ .Site.Title }} - {{ .Title }}</title>
-    <link rel="stylesheet" href="/styles.css">
+    {{ with resources.Get "/styles.css" | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css" media="screen" integrity="{{ .Data.Integrity }}">
+    {{ end }}
+    {{ with resources.Get "/script.js" | minify | fingerprint }}
+      <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+    {{ end }}
+    <script>
+      (function() {
+        const htmlTag = document.documentElement;
+
+        let savedTheme = undefined;
+        let localStorageTheme = localStorage.getItem('theme')
+        if (localStorageTheme === 'light' || localStorageTheme === 'dark') {
+          savedTheme = localStorage.getItem('theme');
+          htmlTag.dataset.theme = savedTheme;
+        } else {
+          savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches? 'dark' : 'light';
+          htmlTag.dataset.theme = savedTheme;
+          localStorage.setItem('theme', htmlTag.dataset.theme);
+        }
+      })();
+    </script>
   </head>
   <body class="container">
     {{ block "main" . }}{{ end }}

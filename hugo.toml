@@ -1,3 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'nwxxb'
+
+[params]
+  github_link = 'https://github.com/nwxxb'
+  linkedin_link = 'https://www.linkedin.com/in/nawwabzia'
