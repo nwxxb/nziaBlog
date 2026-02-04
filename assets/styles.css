@@ -2846,6 +2846,14 @@ textarea,
   font-size: 0.875em;
 }
 
+.badge {
+  font-size: 0.875em;
+  color: var(--pico-muted-color);
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: var(--pico-border-radius);
+  padding: 1px 4px;
+}
+
 .custom-button {
   all: unset;
   display: flex;

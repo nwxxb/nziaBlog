@@ -18,6 +18,13 @@
     {{ with .Params.summary }}
       <p>{{ . }}</p>
     {{ end }}
+    <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;">
+      {{ with .Params.tags }}
+        {{ range . }}
+          <span class="badge">{{ . }}</span>
+        {{ end }}
+      {{ end }}
+    </div>
   </hgroup>
 
 

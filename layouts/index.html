@@ -12,13 +12,19 @@
 <ul>
   {{ range $projectsDir.Pages }}
     {{ if or (gt (len .Pages) 0) (gt (len .Content) 0) }}
-    <li>
+    <li style="margin-bottom: 8px;">
       <a href="{{ .Permalink }}">{{ .Title }}</a>
       <br />
       {{ .Params.summary | truncate 150 }}
+      <br />
+      {{ with .Params.tags }}
+        {{ range . }}
+          <span class="badge">{{ . }}</span>
+        {{ end }}
+      {{ end }}
     </li>
     {{ else }}
-    <li>
+    <li style="margin-bottom: 8px;">
       <a
         href="{{ .Params.link }}"
         data-tooltip="{{ .Params.link }}"
@@ -32,6 +38,12 @@
       </a>
       <br />
       {{ .Params.summary | truncate 150 }}
+      <br />
+      {{ with .Params.tags }}
+        {{ range first 5 . }}
+          <span class="badge">{{ . }}</span>
+        {{ end }}
+      {{ end }}
     </li>
     {{ end }}
   {{ end }}
