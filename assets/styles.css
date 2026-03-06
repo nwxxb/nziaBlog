@@ -77,11 +77,6 @@
   }
 }
 
-body.container {
-  padding: 24px 16px;
-  max-width: 700px;
-}
-
 a {
   --pico-text-decoration: underline;
 }
@@ -694,12 +689,18 @@ section {
  * Container
  */
 .container,
-.container-fluid {
+.container-fluid,
+.maxxed-container-fluid {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: var(--pico-spacing);
-  padding-left: var(--pico-spacing);
+  /* padding-right: var(--pico-spacing); */
+  /* padding-left: var(--pico-spacing); */
+  padding: 24px 16px;
+}
+
+.maxxed-container-fluid {
+  max-width: 800px;
 }
 
 @media (min-width: 576px) {
