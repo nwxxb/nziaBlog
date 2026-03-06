@@ -67,13 +67,13 @@
 @media (min-width: 1280px) {
   :root,
   :host {
-    --pico-font-size: 110%;
+    --pico-font-size: 100%;
   }
 }
 @media (min-width: 1536px) {
   :root,
   :host {
-    --pico-font-size: 125%;
+    --pico-font-size: 110%;
   }
 }
 
@@ -242,7 +242,7 @@ details summary[role=button]:not(.outline)::after {
   --pico-color: #373c44;
   --pico-text-selection-color: rgba(2, 154, 232, 0.25);
   --pico-muted-color: #646b79;
-  --pico-muted-border-color: rgb(231, 234, 239.5);
+  --pico-muted-border-color: rgb(153, 156, 161);
   --pico-primary: #0172ad;
   --pico-primary-background: #0172ad;
   --pico-primary-border: var(--pico-primary-background);
